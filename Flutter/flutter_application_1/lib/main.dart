@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "My App",
       home: MyHomePage(),
-      theme: ThemeData(primaryColor: Colors.redAccent.shade100),
+      theme: ThemeData(primaryColor: Colors.lightGreen),
     );
   }
 }
@@ -22,33 +22,103 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<FoodMenu> menu = [
-    FoodMenu("ข้าว", "20","assets/images/ข้าว.jpg"),
-    FoodMenu("กระเพรา", "40","assets/images/กะเพรา.jpg"),
-    FoodMenu("ส้มตำ", "60","assets/images/ส้มตำ.jpg")
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Select Menu"),
+          title: Text(
+            "บัญชีของฉัน",
+            style: TextStyle(
+                fontSize: 30, color: Colors.white, fontWeight: FontWeight.bold),
+          ),
         ),
-        body: ListView.builder(
-            itemCount: menu.length,
-            itemBuilder: (BuildContext context, int index) {
-              FoodMenu food = menu[index];
-
-              return ListTile(
-                leading: Image.asset(food.img),
-                title: Text(food.name , style: TextStyle(fontSize: 25),),
-                subtitle: Text("ราคา"+food.price+"บาท"),
-                onTap: (){
-                  print("คุณเลือก" +food.name);
-                }
-                
-              );
-            }));
+        body: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(30.0),
+                decoration: BoxDecoration(
+                    color: Colors.blueAccent,
+                    borderRadius: BorderRadius.circular(10)),
+                height: 120,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "ยอดคงเหลือ",
+                      style: TextStyle(
+                          fontSize: 30,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Expanded(
+                      child: Text(
+                        "15,000",
+                        style: TextStyle(
+                            fontSize: 30,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.right,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(height: 10,),
+              Container(
+                decoration: BoxDecoration(
+                    color: Colors.redAccent,
+                    borderRadius: BorderRadius.circular(10)),
+                height: 50,
+                child: Row(
+                  children: [
+                    Text(
+                      "รายจ่าย ",
+                      style: TextStyle(
+                          fontSize: 30,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      "5,000",
+                      style: TextStyle(
+                          fontSize: 30,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.right,
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(height: 10,),
+              Container(
+                decoration: BoxDecoration(
+                    color: Colors.yellowAccent,
+                    borderRadius: BorderRadius.circular(10)),
+                height: 50,
+                child: Row(
+                  children: [
+                    Text(
+                      "รายรับ",
+                      style: TextStyle(
+                          fontSize: 30,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      "1,000",
+                      style: TextStyle(
+                          fontSize: 30,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.right,
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ));
   }
 }
-

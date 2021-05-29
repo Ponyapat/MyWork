@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'FoodMenu.dart';
+import 'MoneyBox.dart';
 
 void main() {
   runApp(MyApp());
@@ -33,92 +33,13 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         body: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(30.0),
-                decoration: BoxDecoration(
-                    color: Colors.blueAccent,
-                    borderRadius: BorderRadius.circular(10)),
-                height: 120,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      "ยอดคงเหลือ",
-                      style: TextStyle(
-                          fontSize: 30,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Expanded(
-                      child: Text(
-                        "15,000",
-                        style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                            textAlign: TextAlign.right,
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(height: 10,),
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.redAccent,
-                    borderRadius: BorderRadius.circular(10)),
-                height: 50,
-                child: Row(
-                  children: [
-                    Text(
-                      "รายจ่าย ",
-                      style: TextStyle(
-                          fontSize: 30,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      "5,000",
-                      style: TextStyle(
-                          fontSize: 30,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.right,
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(height: 10,),
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.yellowAccent,
-                    borderRadius: BorderRadius.circular(10)),
-                height: 50,
-                child: Row(
-                  children: [
-                    Text(
-                      "รายรับ",
-                      style: TextStyle(
-                          fontSize: 30,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      "1,000",
-                      style: TextStyle(
-                          fontSize: 30,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.right,
-                    )
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ));
+            padding: const EdgeInsets.all(20.0),
+            child: Column(children: [
+              MoneyBox("ยอดคงเหลือ", 10000, Colors.blueAccent, 120),
+              SizedBox(height: 10),
+              MoneyBox("รายจ่าย", 5000, Colors.redAccent, 80),
+              SizedBox(height: 10),
+              MoneyBox("รายรับ", 8000, Colors.lightGreenAccent, 80)
+            ])));
   }
 }

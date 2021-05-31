@@ -1,7 +1,8 @@
 class Transaction {
-  String title;
+  String title;//ชื่อรายการ
   double amount;
   DateTime date;
+ 
 
-  Transaction({ this.title,  this.amount,this.date});
+  Transaction({required this.title,  required this.amount,required this.date});
 }

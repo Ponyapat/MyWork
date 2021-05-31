@@ -5,6 +5,7 @@ import 'package:flutter_database/screens/form_screen.dart';
 import 'package:provider/provider.dart';
 
 
+
 void main() {
   runApp(MyApp());
 }
@@ -56,7 +57,27 @@ class _MyHomePageState extends State<MyHomePage> {
                 icon: Icon(Icons.add))
           ],
         ),
-        body: Consumer(builder: (context, TransactionProvider provider, Widget child),)
-      );
+        body: Consumer(builder: ( context, TransactionProvider provider, Widget child) {
+          return ListView.builder(
+            itemCount: provider.transactions.length,
+            itemBuilder: (context, int index) {
+              Transaction data = provider.transactions[index];
+              return Card(
+                elevation: 5,
+                margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
+                child: ListTile(
+                  leading: CircleAvatar(
+                    radius: 20,
+                    child: FittedBox(
+                      child: Text(data.amount.toString()),
+                    ),
+                  ),
+                  title: Text(data.title),
+                  subtitle: Text(data.date.toString()),
+                ),
+              );
+            });
+        },
+        ));
   }
 }

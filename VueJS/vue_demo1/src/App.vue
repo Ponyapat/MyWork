@@ -1,26 +1,18 @@
 <template>
-  <div>
-    <h1>v-model</h1>
-    <!-- MVVM -->
-    <input v-model="message" type="text" placeholder="Enter your text">
-    <div>
-      {{message}}
-    </div>
+  <div id="app">
+        <ul>
+      <li><router-link to="/">Home</router-link></li>
+      <li><router-link to="/Demo1">Demo</router-link></li>
+    </ul>
+    <router-view></router-view>
 
-    <button @click="message=''">Reset</button>
   </div>
 </template>
 
 <script>
 export default {
   name: "app",
-  data() {
-    return {
-      message:""
-    }
-  },
-
-}
+  }
 </script>
 
 <style>

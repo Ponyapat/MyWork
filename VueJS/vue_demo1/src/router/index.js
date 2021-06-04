@@ -4,6 +4,7 @@ import Demo1  from '../views/Demo1.vue'
 import Demo2 from '../views/Demo2_Event.vue'
 import Demo3 from '../views/Demo3_Data.vue'
 import Demo4 from '../views/Demo4_Computed.vue'
+import Demo5 from '../views/Demo5_Binding.vue'
 
 
 
@@ -32,6 +33,11 @@ const routes = [
     path: '/demo4',
     name: 'demo4',
     component: Demo4
+  },
+  {
+    path: '/demo5',
+    name: 'demo5',
+    component: Demo5
   },
 ]
 

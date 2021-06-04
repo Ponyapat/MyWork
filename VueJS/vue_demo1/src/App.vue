@@ -6,6 +6,7 @@
       <li><router-link to="/demo2">Demo2 Event</router-link></li>
       <li><router-link to="/demo3">Demo3 Data</router-link></li>
       <li><router-link to="/demo4">Demo4 Computed</router-link></li>
+      <li><router-link to="/demo5">Demo5 Binding</router-link></li>
     </ul>
     <router-view></router-view>
 

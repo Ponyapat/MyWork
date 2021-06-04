@@ -11,8 +11,10 @@
       <div>{{course[0]}} </div>
 
       <ul>
-          <li v-for="item in course" :key="item.course">{{index}}.{{item}}</li>
+          <li class="content" v-for="item in course" :key="item.course">{{item}}</li>
       </ul>
+
+      <span class="title">5555</span>
   </div>
 </template>
 
@@ -44,9 +46,9 @@ export default {
 
 <style scoped>
 
-    li{
-        color: red;
-
+   
+    .title{
+        color: seagreen;
     }
 
 </style>

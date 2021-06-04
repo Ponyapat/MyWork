@@ -8,6 +8,7 @@
     </ul>
     <router-view></router-view>
 
+    <span class="title">Guide</span>
   </div>
 </template>
 
@@ -25,5 +26,16 @@ export default {
   li{
     display: inline;
     margin-right : 8px; ;
+  }
+
+  .title{
+    font-size: 30px;
+    color: salmon;
+  }
+</style>
+
+<style>
+  .content{
+    color: slateblue;
   }
 </style>

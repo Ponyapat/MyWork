@@ -1,14 +1,20 @@
 <template>
   <div id="footer" class="footer">
-      <span> {{title}} </span>
+      <span :style="{color}"> {{title}} </span>
   </div>
 </template>
 
 <script>
 export default {
     name: "Footer",
+    mounted() {
+        setInterval(()=>{
+            this.$emit("onClock",Date())
+        }, 100)
+    },
     props:[
-        "title"
+        "title",
+        "color"
     ]
 }
 </script>

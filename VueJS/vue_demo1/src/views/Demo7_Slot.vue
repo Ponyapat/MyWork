@@ -11,6 +11,22 @@
 
         <!-- Using fallback content -->
       <Clock/>
+
+
+      <Clock>
+          <span style="color:green">Current Time</span>
+
+            <template v-slot:header>
+                <h1>Header</h1>
+            </template>
+
+            <template v-slot:footer>
+                <h3>Footer</h3>   
+            </template>
+          
+      </Clock>
+
+
   </div>
 </template>
 

@@ -23,7 +23,7 @@ export default {
   
   methods: {
     onClock(value){
-      this.time = moment(value).format('MM/DD/YYY hh:mm:ss')
+      this.time = moment(value).format('MM/DD/YY hh:mm:ss')
     }
   },
 

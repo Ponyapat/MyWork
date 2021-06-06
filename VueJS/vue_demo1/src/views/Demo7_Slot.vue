@@ -7,6 +7,10 @@
       <Clock>
           <span style="color:Blue">Current Time</span>
       </Clock>
+
+
+        <!-- Using fallback content -->
+      <Clock/>
   </div>
 </template>
 

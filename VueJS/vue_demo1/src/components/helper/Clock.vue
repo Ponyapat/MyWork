@@ -1,6 +1,6 @@
 <template>
   <div id="clock">
-     <slot></slot>: {{time}}
+     <slot>Now</slot>: {{time}}
   </div>
 </template>
 

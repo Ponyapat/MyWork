@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <Header/>
-    <router-view></router-view>
+    <Header />
+    <Content />    
+   
+    
     <Footer @onClock="onClock" title="CMU" color="black"/>
 
     <span class="clock">{{time}} </span>
@@ -11,7 +13,9 @@
 <script>
 import Header from './components/layout/Header.vue'
 import Footer from './components/layout/Footer.vue'
+import Content from './components/layout/Content.vue'
 import moment from "moment";
+
 
 
 export default {
@@ -31,7 +35,8 @@ export default {
   
   components:{
     Header,
-    Footer
+    Footer,
+    Content
   }
   }
 </script>
@@ -44,4 +49,5 @@ export default {
     font-size: 30px;
     color: blueviolet;
   }
+  
 </style>

@@ -1,14 +1,6 @@
 <template>
   <div id="app">
-        <ul>
-      <li><router-link to="/">Home</router-link></li>
-      <li><router-link to="/demo1">Demo1</router-link></li>
-      <li><router-link to="/demo2">Demo2 Event</router-link></li>
-      <li><router-link to="/demo3">Demo3 Data</router-link></li>
-      <li><router-link to="/demo4">Demo4 Computed</router-link></li>
-      <li><router-link to="/demo5">Demo5 Binding</router-link></li>
-      <li><router-link to="/demo6">Demo6 Form</router-link></li>
-    </ul>
+    <Header/>
     <router-view></router-view>
 
     <span class="title">Guide</span>
@@ -16,21 +8,19 @@
 </template>
 
 <script>
+import Header from './components/layout/Header.vue'
+
+
 export default {
   name: "app",
+  components:{
+    Header
+  }
   }
 </script>
 
 <style scoped>
-  ul{
-    margin: 0;
-    padding: 0;
-  }
-  li{
-    display: inline;
-    margin-right : 8px; ;
-  }
-
+ 
   .title{
     font-size: 30px;
     color: salmon;

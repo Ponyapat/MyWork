@@ -9,6 +9,7 @@
       <li><router-link to="/demo5">Demo5 Binding</router-link></li>
       <li><router-link to="/demo6">Demo6 Form</router-link></li>
       <li><router-link to="/demo7">Demo7 Slot</router-link></li>
+      <li><router-link to="/demo8">Demo8 Condition</router-link></li>
     </ul> 
   </div>
 </template>

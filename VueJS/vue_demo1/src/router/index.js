@@ -7,6 +7,7 @@ import Demo4 from '../views/Demo4_Computed.vue'
 import Demo5 from '../views/Demo5_Binding.vue'
 import Demo6 from '../views/Demo6_Form.vue'
 import Demo7 from '../views/Demo7_Slot.vue'
+import Demo8 from '../views/Demo8_Condition.vue'
 
 
 const routes = [
@@ -49,6 +50,11 @@ const routes = [
     path: '/demo7',
     name: 'demo7',
     component: Demo7
+  },
+  {
+    path: '/demo8',
+    name: 'demo8',
+    component: Demo8
   },
 ]
 

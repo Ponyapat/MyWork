@@ -4,7 +4,7 @@ export default class CounterClassComponent extends Component {
     render() {
         return (
             <div>
-               <h1>Counter Class Component</h1> 
+               <h1>Test Counter Class Component</h1> 
             </div>
         )
     }

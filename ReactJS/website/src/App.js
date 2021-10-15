@@ -4,31 +4,20 @@ import './App.css';
 function App() {
 
   return (
-    
     <div class="MenuBarTextAlign">
-     <button type="button">normal</button>
-      <button type="button" class="btn">btn</button>
-      <button type="button" class="btn-primary">btn-primary</button>
-      <button type="button" class="btn-secondary">btn-secondary</button>
-      <hr />
-      <button type="button" class="btn-info">btn-ibfo</button>
-      <button type="button" class="btn-warning">btn-warning</button>
-      <button type="button" class="btn-danger">btn-danger</button>
-      <button type="button" class="btn-success">btn-success</button>
-      <hr />
-      <button type="button" class="btn-dark">btn-dark</button>
-      <button type="button" class="btn-light">btn-light</button>
-      <button type="button" class="btn-link">btn-link</button>
-      <hr />
+      <div class="btn-toolbar" role="toolbar">
+        <div class="btn-group mr-3" role="group" aria-label="Group1">
+          <button type="button" class="btn btn-primary">Menu</button>
+          <button type="button" class="btn btn-primary">Post</button>
+          <button type="button" class="btn btn-primary">News</button>
+        </div>
 
-      <div class="btn-group">
-        <button class="btn">Menu</button>
-        <button class="btn">Webboard</button>
-        <button class="btn">Post</button>
-        <button class="btn">Contact</button>
+        <div class="btn-group" role="group" aria-label="Group2">
+          <button type="button" class="btn btn-primary">Contact</button>
+          <button type="button" class="btn btn-primary">info</button>
 
+        </div>
       </div>
-    
     </div>
   
   );

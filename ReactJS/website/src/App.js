@@ -1,55 +1,29 @@
-import React from 'react';
-import './App.css';
+import React, {useState} from 'react';
 
-function App() {
-    return(
-      <div class="MenuBarTextAlign">
-        <div class="card-deck">
-          <div class="card border-primary text-white bg-dark">
-            <div class="card-body">
-              <h1 class="card-title">React</h1>
-              <p class="card-text">Some text inside the fifth card</p>
-              <a href="#" class="btn btn-info">Read more</a>
-            </div>
-          </div>
+function App(){
 
-          <div class="card border-primary text-white bg-dark">
-            <div class="card-body">
-              <h1 class="card-title">React</h1>
-              <p class="card-text">Some text inside the fifth card</p>
-              <a href="#" class="btn btn-info">Read more</a>
-            </div>
-          </div>
-          
-          <div class="card border-primary text-white bg-dark">
-            <div class="card-body">
-              <h1 class="card-title">React</h1>
-              <p class="card-text">Some text inside the fifth card</p>
-              <a href="#" class="btn btn-info">Read more</a>
-            </div>
-          </div>
+  const [data, setData] = useState([])
+  
+  function addData() {
+    setData([...data,{
+      value: Math.random()
+    }])
+  }
 
-          <div class="card border-primary text-white bg-dark">
-            <div class="card-body">
-              <h1 class="card-title">React</h1>
-              <p class="card-text">Some text inside the fifth card</p>
-              <a href="#" class="btn btn-info">Read more</a>
-            </div>
-          </div>
-          
-          <div class="card border-primary text-white bg-dark">
-            <div class="card-body">
-              <h1 class="card-title">React</h1>
-              <p class="card-text">Some text inside the fifth card</p>
-              <a href="#" class="btn btn-info">Read more</a>
-            </div>
-          </div>
+  return (
+    <div>
+      <button onClick={addData}>Add Data</button>
+      <ul>
+        {
+          data.map(item => ( <li>{item.value}</li> ))
+        }
+      </ul>
+    </div>
 
-          
-        </div>
+  );
+  
 
-      </div>
- );
 }
+
 
 export default App;

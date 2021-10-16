@@ -1,27 +1,17 @@
-import React, {useState} from 'react';
+import React , {Component} from 'react';
+import Home from './Home';
 
-function App(){
 
-  const [data, setData] = useState([])
-  
-  function addData() {
-    setData([...data,{
-      value: Math.random()
-    }])
+class App extends Component {
+
+  render(){
+    return(
+      <div>
+        <Home />
+        Hello Component
+      </div>
+    );
   }
-
-  return (
-    <div>
-      <button onClick={addData}>Add Data</button>
-      <ul>
-        {
-          data.map(item => ( <li>{item.value}</li> ))
-        }
-      </ul>
-    </div>
-
-  );
-  
 
 }
 

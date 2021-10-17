@@ -1,37 +1,50 @@
-import  React from 'react';
-import { BrowserRouter, Route, Switch, Link} from 'react-router-dom';
+
+import React from 'react';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import home from './components/home';
 import webboard from './components/webboard';
 import contact from './components/contact';
 import urlnotfound from './components/urlnotfound';
-import  './App.css';
+import './App.css';
 
 function App() {
   return(
     <BrowserRouter>
-      <div>
-        <ul>
-          <li>
-            <Link to="/">Menu</Link>
-          </li>
-          <li>
-            <Link to="/webboard">Webboard</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li>
-        </ul>
-        <div>
-          <Switch>
-            <Route exact path="/" component={home} />
-            <Route exact path="/webboard" component={webboard} />
-            <Route exact path="/contact" component={contact} />
-            <Route  component={urlnotfound} />
-          </Switch>
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">React</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" 
+        data-target="#navMain" aria-controls="navMain"
+        aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="navMain" class="collapse navbar-collapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <Link class="nav-link" to="/">First Page</Link>
+            </li>
+            <li>
+              <Link class="nav-link" to="/webboard">Webboard Page</Link>
+            </li>
+            <li>
+              <Link class="nav-link" to="/contact">Contact Page</Link>
+            </li>
+          </ul>
         </div>
+      </nav>
+
+      <div>
+        <Switch>
+          <Route exact path="/" component={home} />
+          <Route exact path="/webboard" component={webboard} />
+          <Route exact path="/contact" component={contact} />
+          <Route component={urlnotfound} />
+        </Switch>
       </div>
     </BrowserRouter>
   );
+
+
 
 }
 

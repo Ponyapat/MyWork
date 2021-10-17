@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import home from './components/home';
@@ -21,10 +20,10 @@ function App() {
         <div id="navMain" class="collapse navbar-collapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <Link class="nav-link" to="/">First Page</Link>
+              <Link class="nav-link" to="/">Menu Page</Link>
             </li>
             <li>
-              <Link class="nav-link" to="/webboard">Webboard Page</Link>
+              <Link class="nav-link" to="/webboard/1001">Webboard Page</Link>
             </li>
             <li>
               <Link class="nav-link" to="/contact">Contact Page</Link>
@@ -36,7 +35,7 @@ function App() {
       <div>
         <Switch>
           <Route exact path="/" component={home} />
-          <Route exact path="/webboard" component={webboard} />
+          <Route exact path="/webboard/:kid" component={webboard} />
           <Route exact path="/contact" component={contact} />
           <Route component={urlnotfound} />
         </Switch>

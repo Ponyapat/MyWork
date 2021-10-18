@@ -4,9 +4,12 @@ import home from './components/home';
 import webboard from './components/webboard';
 import contact from './components/contact';
 import urlnotfound from './components/urlnotfound';
+import Userform from './components/userform';
 import './App.css';
 
 function App() {
+
+
   return(
     <BrowserRouter>
       <nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -40,8 +43,13 @@ function App() {
           <Route component={urlnotfound} />
         </Switch>
       </div>
+
+      <div class="container">
+        <Userform />
+      </div>
+
     </BrowserRouter>
-  );
+     );
 
 
 

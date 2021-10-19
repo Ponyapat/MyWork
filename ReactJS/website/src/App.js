@@ -1,58 +1,39 @@
-import React from 'react';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
-import home from './components/home';
-import webboard from './components/webboard';
-import contact from './components/contact';
-import urlnotfound from './components/urlnotfound';
-import Userform from './components/userform';
-import './App.css';
+import React , {useState,useEffect} from 'react';
+import Axios from 'axios';
 
 function App() {
+  const [data, setdata] = useState([]);
 
 
-  return(
-    <BrowserRouter>
-      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">React</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" 
-        data-target="#navMain" aria-controls="navMain"
-        aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+  useEffect(() => {
+    Axios.get('https://jsonplaceholder.typicode.com/posts')
+    .then(res=>{
+      console.log(res)
+      setdata(res.data)
+    })
+    .catch(err=>{
+      console.log(err)
+    });
+  }, [])
 
-        <div id="navMain" class="collapse navbar-collapse">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <Link class="nav-link" to="/">Menu Page</Link>
-            </li>
-            <li>
-              <Link class="nav-link" to="/webboard/1001">Webboard Page</Link>
-            </li>
-            <li>
-              <Link class="nav-link" to="/contact">Contact Page</Link>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
+    return (
       <div>
-        <Switch>
-          <Route exact path="/" component={home} />
-          <Route exact path="/webboard/:kid" component={webboard} />
-          <Route exact path="/contact" component={contact} />
-          <Route component={urlnotfound} />
-        </Switch>
+        <table border='1'>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Detail</th>
+          </tr>
+          {
+            data.map(i=>(<tr><td>{i.id}</td><td>{i.title}</td><td>{i.body}</td></tr> ))
+          }
+        </table>
       </div>
-
-      <div class="container">
-        <Userform />
-      </div>
-
-    </BrowserRouter>
-     );
+    );
 
 
 
 }
+
 
 export default App;

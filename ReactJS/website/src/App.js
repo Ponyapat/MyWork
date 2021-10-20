@@ -1,53 +1,25 @@
-import React , {useState,useEffect} from 'react';
-import Axios from 'axios';
+import React , {Component} from 'react';
+import Employee from './Employee';
+import { connect} from 'react-redux';
 
-function App() {
-  const [data, setData] = useState({});
-  const [id, setId] = useState(1);
-  const [currentid, setcurrentid] = useState(1);
-
-  function showData() {
-    setcurrentid(id)
-  }
-
-
-  useEffect(() => {
-    Axios.get('https://jsonplaceholder.typicode.com/posts/' + id )
-    .then(res=>{
-      console.log(res)
-      setData(res.data)
-    })
-    .catch(err=>{
-      console.log(err)
-    });
-  }, [currentid])
-
-    return (
+class App extends Component {
+  render() {
+    return(
       <div>
-
-        ID : <input type="text" value={id} 
-        onChange={e=>setId(e.target.value)}/>
-        <button type="button" onClick={showData}>Read Data</button>
-        <br />
-        <table border='1'>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Detail</th>
-          </tr>
-          <tr>
-            <td>{data.id}</td>
-            <td>{data.title}</td>
-            <td>{data.body}</td>
-          </tr>
-
-        </table>
+        <h1>Class Component</h1>
+        <hr />
+        <Employee fullname={this.props.salaryReducer.fullname}
+        salary={this.props.salaryReducer.salary} />
       </div>
     );
-
-
-
+  }
 }
 
+const mapStateToProp = (state) => {
+  return {
+    reducer:state.reducer,
+    salaryReducer:state.salaryReducer
+  }
+}
 
-export default App;
+export default connect(mapStateToProp)(App);

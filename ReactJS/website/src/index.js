@@ -3,59 +3,81 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {createStore} from 'redux';
+import {createStore, combineReducers} from 'redux';
+import { Provider } from 'react-redux';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
 
-const reducer=(state, action) => {
+
+const reducer=(state=iniState , action) => {
   switch (action.type) {
     case "ADD":
-      state = state + action.payload;
+      state = {
+        amount: state.amount + action.payload,
+        age:state.age+action.payload
+      }
       break;
     case "SUB":
-      state = state - action.payload;
+      state = {
+        amount:state.amount - action.payload,
+        age:state.age-action.payload
+      }
       break;
-      default:
+    default:
       return state;
   }
   return state;
 
 }
 
-const store = createStore(reducer, 100, window.__REDUX_DEVTOOLS_EXTENSION__
+const salaryReducer = (state={fullname:"",salary:0}, action) => {
+  switch (action.type) {
+    case "setFullName":
+      state = {
+        ...state,
+        fullname:action.payload
+      }
+      break;
+    case "setSalary":
+      state = {
+        ...state,
+        salary:action.payload
+      }
+    default:
+      return state;
+  }
+  return state;
+}
+
+const iniState ={
+  amount: 200,
+  age: 30
+}
+
+
+const store = createStore(combineReducers({reducer, salaryReducer}), window.__REDUX_DEVTOOLS_EXTENSION__
   && window.__REDUX_DEVTOOLS_EXTENSION__());
   store.subscribe(()=>{
     console.log("Current Value : ", store.getState());
   });
 
-
-
 store.dispatch({
-  type: "ADD",
-  payload: 10
+  type: "setFullName",
+  payload: "Ponyapat"
 });
 
 store.dispatch({
-  type: "ADD",
-  payload: 5
+  type: "setSalary",
+  payload: 25000
 });
 
-store.dispatch({
-  type: "SUB",
-  payload: 50
-});
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,document.getElementById('root'));
 
-store.dispatch({
-  type: "ADD",
-  payload: 20
-});
+reportWebVitals();

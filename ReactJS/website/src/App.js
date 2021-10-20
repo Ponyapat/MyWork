@@ -1,54 +1,19 @@
-import React , {Component} from 'react';
-import Employee from './Employee';
-import { connect} from 'react-redux';
+import React from 'react';
+import UserComponent from './components/usercomponent';
 
-class App extends Component {
-  render() {
-    return(
-      <div>
-        <h1>Class Component APP</h1>
-        <hr />
-        <Employee fullname={this.props.salaryReducer.fullname} 
-         salary={this.props.salaryReducer.salary} />
-        <button onClick={() => this.props.setFullName("Poonyapat Anusonthi")}>Change Name</button>
-        <button onClick={()=>this.props.editSalary(500)}>
-          +
-        </button>
-        <button onClick={() => this.props.editSalary(-500)}>
-          -
-        </button>
-        
-      </div>
-    );
-  }
-}
+export const dbContext = React.createContext();
 
-const mapStateToProp = (state) => {
-  return {
-    reducer:state.reducer,
-    salaryReducer:state.salaryReducer
-  }
-}
+function App () {
+  return(
+    <div>
+      <h1>App Component</h1>
+      <dbContext.Provider value={'Poonyapat'}>
+        <UserComponent />
+        </dbContext.Provider>
+    </div>
+  );
 
-const mapDispatchToProp = (dispatch) => {
-  return {
-    setFullName:(fullname) => {
-      dispatch({
-        type:"setFullName",
-        payload:fullname
-      })
-    },
-
-    editSalary: (salary) => {
-      dispatch({
-        type: "editsalary",
-        payload: salary
-      })
-    }
-   
-}
-}
+} 
 
 
-
-export default connect(mapStateToProp,mapDispatchToProp)(App);
+export default App;

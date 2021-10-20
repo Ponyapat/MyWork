@@ -47,6 +47,13 @@ const salaryReducer = (state={fullname:"",salary:0}, action) => {
         ...state,
         salary:action.payload
       }
+      break;
+    case "editSalary":
+      state = {
+        ...state,
+        salary:state.salary + action.payload
+      }
+      break;
     default:
       return state;
   }
@@ -67,7 +74,7 @@ const store = createStore(combineReducers({reducer, salaryReducer}), window.__RE
 
 store.dispatch({
   type: "setFullName",
-  payload: "Ponyapat"
+  payload: "Guide"
 });
 
 store.dispatch({

@@ -1,22 +1,33 @@
-import React from 'react';
-import UserComponent from './components/usercomponent';
+import React , {useReducer} from 'react';
 
-export const dbContext = React.createContext();
-export const userContext = React.createContext();
-
-function App() {
-  return (
-    <div>
-      <h1>App Component</h1>
-      <dbContext.Provider value={'Poonyapat'}>
-        <userContext.Provider value={'gmail'}>
-          <UserComponent />
-        </userContext.Provider>
-      </dbContext.Provider>
-    </div>
-  );
-
+const iniState = 0;
+const reducer = (state, action) => {
+  switch (action) {
+    case 'ADD':
+      return state + 1
+    case 'SUB':
+      return state - 1
+    case 'CLEAR' : 
+      return iniState
+      default:
+      return state
+  }
 }
 
+function App() {
+const [data, dispatch] = useReducer(reducer, iniState)
+
+  return (
+  <div>
+    <h1>App Component</h1>
+    <div>Value : {data} </div>
+      <button onClick={()=>dispatch('ADD')}>+</button>
+      <button onClick={()=>dispatch('SUB')}>-</button>
+      <button onClick={()=>dispatch('CLEAR')}>Clear</button>
+
+  </div>
+);
+
+}
 
 export default App;

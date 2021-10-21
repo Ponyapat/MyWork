@@ -1,32 +1,15 @@
 import React, { useContext } from 'react';
-import { dbContext, userContext } from '../App';
+import { dbContext } from '../App';
 
 function UserComponent() {
+   const db = useContext(dbContext);
+   
     return (
         <div>
-            <h1>User Component</h1>
-            <dbContext.Consumer>
-                {
-                    db => {
-                        return (
-                            <userContext.Consumer>
-                                {
-                                    user => {
-                                        return (
-                                            <div>
-                                                name : {db}
-                                                <br />
-                                                E-mail : {user}
-                                            </div>
-                                        )
-                                    }
-                                }
-                            </userContext.Consumer>
-                        )
-                    }
-
-                }
-            </dbContext.Consumer>
+            <h1>User Componenet</h1>
+            <button onClick={()=>db.dataDispatch('ADD')}>+</button>
+            <button onClick={() =>db.dataDispatch('SUB')}>-</button>
+            <button onClick={() =>db.dataDispatch('CLEAR')}>Clear</button>
         </div>
     )
 

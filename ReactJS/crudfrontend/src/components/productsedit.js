@@ -24,7 +24,7 @@ function ProductEdit(props) {
         e.preventDefault();
         async function updateProduct() {
             try {
-                const res = await put (url + '/' + product.Id , product);
+                const res = await put (url + '/' + product.id , product);
                 console.log(res);
                 props.history.push('/productslists');
             }catch (err) {

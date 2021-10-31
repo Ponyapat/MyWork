@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import axios from 'axios';
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+import axios from 'axios'
 
 export default class CreateStudent extends Component {
-
 
     constructor(props) {
         super(props)
@@ -16,12 +15,15 @@ export default class CreateStudent extends Component {
         }
     }
 
+
     onChangeStudentName = (e) => {
         this.setState({ name: e.target.value })
     }
+
     onChangeStudentEmail = (e) => {
         this.setState({ email: e.target.value })
     }
+
     onChangeStudentRollno = (e) => {
         this.setState({ rollno: e.target.value })
     }
@@ -35,29 +37,30 @@ export default class CreateStudent extends Component {
             rollno: this.state.rollno
         };
 
-        axios.post('http://localhost:4000/students/create-student', studentObject).then(res=> 
-        console.log(res.data));
-        
-        // console.log('Successfully Created');
-        // console.log("Name: ${this.state.name} ");
-        // console.log("Email: ${this.state.email}");
-        // console.log("Roll: ${this.state.rollno} ");
+        axios.post('http://localhost:4000/students/create-student', 
+        studentObject).then(res => console.log(res.data));
 
-        this.setState = {
+        // console.log('Student successfully created!');
+        // console.log(`Name: ${this.state.name}`);
+        // console.log(`Email: ${this.state.email}`);
+        // console.log(`Roll no: ${this.state.rollno}`);
+
+        this.setState({
             name: '',
             email: '',
             rollno: ''
-        }
+        })
     }
+
 
     render() {
         return (
-            <div className='form-warpper mt-5'>
-                <h1> Create Student </h1>
+            <div className="form-wrapper mt-5">
+                <h1>Create Student</h1>
                 <Form onSubmit={this.onSubmit}>
                     <Form.Group controlId="Name">
                         <Form.Label>Name</Form.Label>
-                        <Form.Control type='text' value={this.state.name} 
+                        <Form.Control type="text" value={this.state.name} 
                         onChange={this.onChangeStudentName} />
                     </Form.Group>
 
@@ -69,21 +72,16 @@ export default class CreateStudent extends Component {
 
                     <Form.Group controlId="Roll">
                         <Form.Label>Roll No.</Form.Label>
-                        <Form.Control type='text' value={this.state.rollno} 
+                        <Form.Control type="text" value={this.state.rollno} 
                         onChange={this.onChangeStudentRollno} />
                     </Form.Group>
                     <br />
 
-                    <Button variant='success' size='lg' block='block' type='submit'>
+                    <Button variant="success" size="lg" block="block" type="submit">
                         Create Student
                     </Button>
-
-
                 </Form>
-
-               
             </div>
         )
     }
 }
-

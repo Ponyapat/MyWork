@@ -7,14 +7,13 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import EditStudent from './components/edit-student.component';
 import StudentList from './components/student-list.component';
-import { BrowserRouter , Switch , Route , Link } from 'react-router-dom';
+import { BrowserRouter as Router , Switch , Route , Link } from 'react-router-dom';
 import CreateStudent from './components/create-student.component';
 
 function App() {
   return (
+    <Router>
     <div className="App">
-      
-
         <NavBar bg='dark' variant='dark'>
           <Container>
             <NavBar.Brand>
@@ -60,6 +59,7 @@ function App() {
 
 
     </div>
+    </Router>
   );
 }
 

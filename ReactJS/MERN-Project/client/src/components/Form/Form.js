@@ -26,7 +26,7 @@ const Form =() => {
     }
 
     const clear = () => {
-
+        
     }
  
 return (
@@ -70,6 +70,7 @@ return (
                 fullWidth
                 value={postData.tags}
                 onChange={(e) => setPostData({ ...postData, tags: e.target.value })} />
+                
                 <div className={classes.fileInput}>
                     <FileBase
                         type="file"

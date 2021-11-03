@@ -1,9 +1,9 @@
-import * as api from '../api';
+import * as api from '../api/index.js';  
 
 //Action Creator
 export const getPosts = () => async(dispatch) => {
     try {
-        const {data} = await api.fetchPosts();
+        const { data } = await api.fetchPosts();
 
         dispatch({type: 'FETCH_ALL', payload: data})
     } catch (error) {
@@ -17,6 +17,6 @@ export const createPost = (post) => async (dispatch) => {
 
         dispatch({ type: 'CREATE', payload: data});
     }catch (error) {
-
+        console.log(error.mesasge);
     }
 }

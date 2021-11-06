@@ -8,13 +8,14 @@ import diary from './images/diary.png';
 import useStyles from './styles';
 
 const App = () => {
+    const [currentId, setCurrentId] = useState(null);
     const classes = useStyles();
     const dispatch = useDispatch();
-    const [currentId, setCurrentId] = useState(null);
+    
 
     useEffect(() => {
         dispatch(getPosts());
-    }, [dispatch]);
+    }, [currentId, dispatch]);
 
     return (
         <Container maxidth='lg'>

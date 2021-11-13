@@ -27,7 +27,7 @@ const Auth = () => {
 
     };
 
-    const switchMode =() => {
+    const switchMode = () => {
         setIsSignup((prevIsSignup) => !prevIsSignup);
         handleShowPassword(false);
     };

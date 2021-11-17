@@ -4,6 +4,7 @@ import { GoogleLogin } from 'react-google-login';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+
 import useStyles from './styles';
 import Input from './Input';
 import Icon from './icon';
@@ -16,7 +17,7 @@ const Auth = () => {
     const classes = useStyles();
     const [showPassword, setshowPassword] = useState(false)
     const [isSignup, setIsSignup] = useState(false);
-    const [formData, setFormData] = useState();
+    const [formData, setFormData] = useState(initialState);
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -29,10 +30,8 @@ const Auth = () => {
         if(isSignup) {
             dispatch(signup(formData, history))
         } else {
-            dispatch(signup(formData, history))
+            dispatch(signin(formData, history))
         }
-
-        console.log(formData);
     };
 
     const handleChange = (e) => {
@@ -41,7 +40,7 @@ const Auth = () => {
 
     const switchMode = () => {
         setIsSignup((prevIsSignup) => !prevIsSignup);
-        handleShowPassword(false);
+        setshowPassword(false);
     };
 
    const googleSuccess = async (res) => {
@@ -49,7 +48,7 @@ const Auth = () => {
     const token = res?.tokenId;
 
     try {
-        dispatch({ type : 'AUTH', data: { result, token } });
+        dispatch({ type : 'AUTH' , data: { result, token } });
 
         history.push('/');
     } catch (error) { 
@@ -96,7 +95,7 @@ const Auth = () => {
                             handleShowPassword={handleShowPassword} />
 
                             { isSignup && <Input name='confirmPassword' 
-                            label='Repeat Password' 
+                            label='Confirm Password' 
                             handlechange={handleChange}
                             type='password' />}
 

@@ -1,7 +1,7 @@
-import bcrypy from "bcryptjs";
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
- import User from '../models/user.js';
+import User from '../models/user.js';
 
  export const signin = async (req, res) => {
     const { email, password } = req.body;
@@ -9,15 +9,12 @@ import jwt from "jsonwebtoken";
     try {
         const existingUser = await User.findOne({ email });
 
-        if(!existingUser) {
-            return res.status(404).json({ message:  "User not found." });
-        }
+        if(!existingUser) return res.status(404).json({ message:  "User not found." });
 
         const isPasswordCorrect = await bcrypt.compare(password, existingUser.password);
 
-        if(!isPasswordCorrect) {
-            return res.status(400).json({message: "Invalid password."});
-        }
+        if(!isPasswordCorrect)  return res.status(400).json({message: "Invalid password."});
+        
 
         const token = jwt.sign({ email: existingUser.email, userId: existingUser._id, id: existingUser._id }, 'test', { expiresIn: '1h' });
 
@@ -33,13 +30,10 @@ import jwt from "jsonwebtoken";
     try {
         const existingUser = await User.findOne({ email });
 
-        if (existingUser) {
-            return res.status(400).json({ message: "User already exist." });
-        }
+        if(existingUser) return res.status(400).json({ message: "User already exist." });
 
-        if(password !== confirmPassword) {
-            return res.status(400).json({ message: "Password  does not match." });
-        }
+        if(password !== confirmPassword) return res.status(400).json({ message: "Password  does not match." });
+
 
         const hashedPassword = await bcrypt.hash(password, 12);
 

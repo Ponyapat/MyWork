@@ -8,20 +8,25 @@ import { useHistory } from 'react-router-dom';
 import useStyles from './styles';
 import Input from './Input';
 import Icon from './icon';
+import { AUTH } from '../../constants/actionTypes';
 import { signin, signup } from '../../actions/auth';
 
-const initialState = { firstName:'', lastName: '', email:'', password:'', confirmPassword:'' }
+const initialState = { firstName:'', 
+lastName: '', 
+email:'', 
+password:'', 
+confirmPassword:'' }
 
 
-const Auth = () => {
+
+const SignUp = () => {
     const classes = useStyles();
     const [showPassword, setshowPassword] = useState(false)
     const [isSignup, setIsSignup] = useState(false);
     const [formData, setFormData] = useState(initialState);
     const dispatch = useDispatch();
     const history = useHistory();
-
-    const handleShowPassword = () => setshowPassword((prevShowPassword) => !prevShowPassword);
+    const handleShowPassword = () => setshowPassword(!showPassword);
 
 
     const handleSubmit = (e) => {
@@ -39,6 +44,7 @@ const Auth = () => {
     };
 
     const switchMode = () => {
+        setFormData(initialState);
         setIsSignup((prevIsSignup) => !prevIsSignup);
         setshowPassword(false);
     };
@@ -48,7 +54,7 @@ const Auth = () => {
     const token = res?.tokenId;
 
     try {
-        dispatch({ type : 'AUTH' , data: { result, token } });
+        dispatch({ type : AUTH , data: { result, token } });
 
         history.push('/');
     } catch (error) { 
@@ -56,21 +62,20 @@ const Auth = () => {
     }
    };
 
-   const googleFailure =(error) => {
-    console.log(error);
-    console.log('Google Sign In was UnSuccessful. Try Again');
+   const googleFailure =() => {
+    alert('Google Sign In was UnSuccessful. Try Again');
    };
 
 
     return (
-        <div>
+        
             <Container component='main' maxWidth='xs'>
                 <Paper className={classes.paper} elevation={3}>
                     <Avatar className={classes.avatar}>
                         <LockOutlinedIcon />
                     </Avatar>
 
-                    <Typography variant='h5'>
+                    <Typography component='h1' variant='h5'>
                         {isSignup ? 'Sign Up' : 'Sign In ' }
                     </Typography>
 
@@ -90,7 +95,7 @@ const Auth = () => {
 
                             <Input name='password' 
                             label='Password' 
-                            handlechange={handleChange} 
+                            handleChange={handleChange} 
                             type={showPassword ? 'text' : 'password'} 
                             handleShowPassword={handleShowPassword} />
 
@@ -126,12 +131,10 @@ const Auth = () => {
                             onSuccess={googleSuccess}
                             onFailure={googleFailure}
                             cookiePolicy='single_host_origin'
+                      />
 
 
-                        />
-
-
-                        <Grid container justyify='flex-end'>
+                        <Grid container justify='center'>
                                 <Grid item>
                                     <Button onClick={switchMode}>
                                         { isSignup ? "Already have an account? Sign In " : "Don't have an account? Sign Up"}
@@ -144,8 +147,8 @@ const Auth = () => {
 
                 </Paper>
             </Container>
-        </div>
+    
     )
 }
 
-export default Auth
+export default SignUp;

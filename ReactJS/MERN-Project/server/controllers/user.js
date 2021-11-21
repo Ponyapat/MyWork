@@ -3,6 +3,8 @@ import jwt from "jsonwebtoken";
 
 import User from '../models/user.js';
 
+const secret = 'test';
+
  export const signin = async (req, res) => {
     const { email, password } = req.body;
 
@@ -39,7 +41,7 @@ import User from '../models/user.js';
 
         const result = await User.create({
             email, password: hashedPassword, name: `${firstName} ${lastName}`
-        })
+        });
 
         const token = jwt.sign({ email: result.email, id: result._id }, 'test', { expiresIn: '1h' });
 

@@ -1,20 +1,25 @@
-x = input().split()
-y = int(input())
-min = 0
-
-for i in range(y):
-    min += int(x[i])
+list = input().split()
+minSum = 0
 index = 0
 
-for i in range(len(x)):
-    temp = 0
-    for j in range(y):
-        if(i+j < len(x)):
-            temp += int(x[i+j])
-        else:
-            temp += int(x[len(x)-1])
-    if(temp < min):
-        min = temp
+for i in range(len(list)):
+    list[i] = int(list[i])
+
+b = int(input())
+
+
+for j in range(b):
+    minSum += list[j]
+
+
+
+for i in range(1, len(list)-b+1):
+    Sum = 0
+    for j in range(i, i+b):
+        Sum += list[j]
+    if Sum < minSum:
+        minSum = Sum
         index = i
-print(min)
+
+print(minSum)
 print(index)

@@ -1,6 +1,11 @@
 list = input().split()
 even = []
 odd = []
+#num = []
+
+#for i in list:
+    #temp = int(list)
+    #num.append(temp)
 
 for i in range(len(list)):
     if int(list[i]) % 2 == 0:

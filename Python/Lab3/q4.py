@@ -12,5 +12,7 @@ elif b == '/' and c == 0:
     print('Division by zero ')
 elif b == '/':
     print('{:.2f}'.format(a/c))
-elif b == '**':
-    print('{:.2f}'.format(a**c))
+elif b == '//' and c == 0:
+    print('Division by zero ')
+elif b == '//':
+    print('{:.2f}'.format(a//c))
